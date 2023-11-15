@@ -1,5 +1,5 @@
 import pytest
-from project import validate_choice, encrypt, decryption_text_valdiation, decrypt
+from encrypt_decrypt import validate_choice, encrypt, decryption_text_valdiation, decrypt
 
 
 def test_validate_choice():
