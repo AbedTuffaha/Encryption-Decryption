@@ -2,9 +2,9 @@
 
 This project is a version of an encryption/decryption tool combined with a key for an extra layer of protection. It consists of the following files:
 
-- `project.py`: Contains the code for the encryption/decryption tool.
-- `test_project.py`: Tests vital functions from `project.py` to avoid various errors.
-- `requirements.txt`: Contains the pip-installable libraries used in `project.py` and `test_project.py`.
+- `encrypt_decrypt.py`: Contains the code for the encryption/decryption tool.
+- `test_encrypt_decrypt.py`: Tests vital functions from `encrypt_decrypt.py` to avoid various errors.
+- `requirements.txt`: Contains the pip-installable libraries used in `encrypt_decrypt.py` and `test_encrypt_decrypt.py`.
 - `README.md`: Explains the project in detail and provides an overview of each file.
 
 ## Execution
