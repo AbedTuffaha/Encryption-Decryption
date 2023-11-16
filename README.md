@@ -17,7 +17,7 @@ If the user chooses to encrypt, they will be prompted to enter a text to encrypt
 
 The encryption process involves modifying the text based on its character type and combining alphabet characters with the encryption key to produce new characters. This approach increases the complexity of the encryption.
 
-To ensure stronger encryption, each encryption key is looped through for each alphabet character in the length of the given text by using (`en_key_counter`). This makes decrypting parts of an encrypted text yield incorrect results in most cases, specially when using alphabet characters in the text.
+To ensure stronger encryption, each encryption key is looped through for each alphabet character in the length of the given text by using `en_key_counter`. This makes decrypting parts of an encrypted text yield incorrect results in most cases, specially when using alphabet characters in the text.
 
 The following describes the encryption process for each character `char` in each `word` in the target text, after splitting it using `split()`:
 
@@ -66,8 +66,10 @@ To decrypt the encrypted text, the following process is applied:
 - Reverse each `word`, which will return each `word` to its original order.
 - For each character `char` in each `word` in the list, perform the following steps:
   - If `char` is a digit, continue processing.
-  - If `char` is not a digit, split `word` into `left` and `word` and reverse the order of `left` and `word`. Then, in the new `word`, if `char` is a digit, continue processing. If `char` is not a digit, split the `word` into `word` and `right` and reverse the order of `word` and `right`.
-    - The reason for the mulitple use of reversals here is to ensure that the encryption of digits less than 4 is preserved in the middle part of the final `word`.
+  - If `char` is not a digit, split `word` into `left` and `word` and reverse the order of `left` and `word`.
+  - In the new `word`, if `char` is a digit, continue processing.
+  - If `char` is not a digit, split the `word` into `word` and `right` and reverse the order of `word` and `right`.
+    - The reason for the mulitple use of reversals here is to ensure that the encryption of digits less than 4 is preserved in the middle part of the final `word`. Multiple approaches are possible here as well like starting from `-1` index, or checking if `char` and the next 2 indices match special digits encrpytion.
   - Now we have `left`, `word`, and `right`. If there were no matches for digits, `left` and `right` would be empty. Then, for each `char` in `word`, perform the following steps:
     - If `char` is in the alphabet:
       - If `char` is uppercase, apply the reverse process of lowercase encryption. Take the index value of the uppercase character from a given alphabet string, subtract the lowercase character value in the key from it, add 26, take the remainder after dividing by 26, and finally replace `char` with a lowercase character from a given lowercase alphabet string using the remainder as an index.
