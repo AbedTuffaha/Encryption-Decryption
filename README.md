@@ -17,7 +17,7 @@ If the user chooses to encrypt, they will be prompted to enter a text to encrypt
 
 The encryption process involves modifying the text based on its character type and combining alphabet characters with the encryption key to produce new characters. This approach increases the complexity of the encryption.
 
-To ensure stronger encryption, each encryption key is made unique by looping through it for each alphabet character in the length of the given text by using (`en_key_counter`). This makes decrypting part of the encrypted text yield an incorrect result.
+To ensure stronger encryption, each encryption key is looped through for each alphabet character in the length of the given text by using (`en_key_counter`). This makes decrypting parts of an encrypted text yield incorrect results in most cases, specially when using alphabet characters in the text.
 
 The following describes the encryption process for each character `char` in each `word` in the target text, after splitting it using `split()`:
 
@@ -45,6 +45,8 @@ Once all words are processed, they are joined with a space using `"".join()` and
 Using the `tabulate` library, a table is printed that displays the text, encryption key, and encrypted text.
 
 ### Decryption
+
+As mentioned in the encryption part, attempting to decrypt parts of an encrypted text will yield incorrect results in most cases, specially with alphabet characters, and therefore the entire encrypted text must be used in decryption. This is a design choice made to enhance security, as any missing alphabet character in the encrypted text will drastically alter the decryption result.
 
 Choosing the decrypt option will prompt the user for the following inputs:
 
@@ -75,6 +77,6 @@ To decrypt the encrypted text, the following process is applied:
     - If `char` is "@", replace it with the square root of the combined same-index elements from 'left' and 'right'. A counter `j` is used for this purpose.
     - If `char` is anything else, keep it as is.
 
-After processing the last character, add the resulting word to a list. Once all words are processed, join the word list with a space using the `join()` function and return it as the decrypted text.
+After processing the last character, add the resulting word to a list. Once all words are processed, join the word list with a space using the `"".join()` function and return it as the decrypted text.
 
 Finally, using the `Tabulate` library, a table is printed containing the encrypted text, the encryption key, and the original text.
