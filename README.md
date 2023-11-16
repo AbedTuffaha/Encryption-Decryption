@@ -69,7 +69,7 @@ To decrypt the encrypted text, the following process is applied:
   - If `char` is not a digit, split `word` into `left` and `word` and reverse the order of `left` and `word`.
   - In the new `word`, if `char` is a digit, continue processing.
   - If `char` is not a digit, split the `word` into `word` and `right` and reverse the order of `word` and `right`.
-    - The reason for the mulitple use of reversals here is to ensure that the encryption of digits less than 4 is preserved in the middle part of the final `word`. Multiple approaches are possible here as well like starting from `-1` index, or checking if `char` and the next 2 indices match special digits encrpytion.
+    - The reason for the multiple uses of reverses here is to ensure that the encryption of digits less than 4 is preserved in the middle part of the final `word`, while repeating the steps above. Multiple approaches are possible here as well like starting from `-1` index, or checking if `char` and the next 2 indices match special digits encrpytion.
   - Now we have `left`, `word`, and `right`. If there were no matches for digits, `left` and `right` would be empty. Then, for each `char` in `word`, perform the following steps:
     - If `char` is in the alphabet:
       - If `char` is uppercase, apply the reverse process of lowercase encryption. Take the index value of the uppercase character from a given alphabet string, subtract the lowercase character value in the key from it, add 26, take the remainder after dividing by 26, and finally replace `char` with a lowercase character from a given lowercase alphabet string using the remainder as an index.
