@@ -54,7 +54,7 @@ Choosing the decrypt option will prompt the user for the following inputs:
   - If `word` contains "#", it must be between brackets as "(#)" or one of the following: "#7#", "#8#", "#9#", and/or "#0#".
   - If digits are present on both the left and right sides of `word`, the length of `left` must be equal to the length of `right`, as well as the number of occurrences of "@" alone, as "(@)" with parenthesis is not associated with digits' encryption.
   - The digits at both ends of `word` must form perfect squares of the digits from 4 to 9.
-  - In case of incorrect or invalid digit encryption, a custom error is raised using the class `IncorrectNumberEncryptionError` which inherits from the `Exception` class.
+  - In case of incorrect or invalid digit encryption, a custom error is raised using the class `IncorrectDigitEncryptionError` which inherits from the `Exception` class.
 
 - The encryption key: Note that while any key will produce any result, only the original key will decrypt the full encrypted text correctly.
 
