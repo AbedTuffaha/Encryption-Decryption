@@ -50,7 +50,7 @@ As mentioned in the encryption part, attempting to decrypt parts of an encrypted
 
 Choosing the decrypt option will prompt the user for the following inputs:
 
-- An encrypted text: The encrypted text provided will undergo thorough validation using regular expressions. Each `word` in the text must meet specific criteria:
+- An encrypted text: The encrypted text provided will undergo thorough validation using regular expressions in the function `decryption_text_valdiation(text)`. Each `word` in the text must meet specific criteria:
   - If `word` contains "#", it must be between brackets as "(#)" or one of the following: "#7#", "#8#", "#9#", and/or "#0#".
   - If numbers are present on both the left and right sides of `word`, the length of the left side must be equal to the length of the right side, as well as the number of occurrences of "@" alone, as "(@)" with parenthesis is not associated with digits' encryption.
   - The numbers at both ends of `word` must form perfect squares of the numbers from 4 to 9.
