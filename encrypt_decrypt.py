@@ -82,7 +82,7 @@ def main():
                     print("Invalid input: Nothing was entered")
                     pass
                 except IncorrectDigitEncryptionError:
-                    print("Invalid input: incorrect number encryption")
+                    print("Invalid input: Incorrect digit encryption")
                     pass
                 except EOFError:
                     sys.exit("\nProgram terminated")
