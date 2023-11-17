@@ -10,7 +10,7 @@ class EmptyStringError(Exception):
 
 
 #Custom error for decryption validation
-class IncorrectNumberEncryptionError(Exception):
+class IncorrectDigitEncryptionError(Exception):
     pass
 
 
@@ -81,7 +81,7 @@ def main():
                 except EmptyStringError:
                     print("Invalid input: Nothing was entered")
                     pass
-                except IncorrectNumberEncryptionError:
+                except IncorrectDigitEncryptionError:
                     print("Invalid input: incorrect number encryption")
                     pass
                 except EOFError:
@@ -185,12 +185,15 @@ def encrypt(text, encryption_key):
 def decryption_text_valdiation(text):
     text = text.split()
     for word in text:
+        
+        #Checks if 'word' contains digits only, which is incorrect
         if word.isdigit():
-            raise IncorrectNumberEncryptionError
+            raise IncorrectDigitEncryptionError
 
-        #Returns the word to its original order
+        #Returns 'word' to its original order
         word = word[::-1]
 
+        #Splits 'word' into 'left', 'word' and 'right'
         left = ""
         right = ""
         j = 0
@@ -217,27 +220,27 @@ def decryption_text_valdiation(text):
         if len(re.findall(r"(7|8|9|0)", word)) == len(re.findall(r"#(7|8|9|0)#", word)):
             pass
         else:
-            raise IncorrectNumberEncryptionError
+            raise IncorrectDigitEncryptionError
 
         #Checks if the character "#" follows the encryption rules
         if len(re.findall(r"#", word)) == (len(re.findall(r"#(7|8|9|0)#", word)) * 2 + len(re.findall(r"\(#\)", word))):
             pass
         else:
-            raise IncorrectNumberEncryptionError
+            raise IncorrectDigitEncryptionError
 
         #Checks if the length of digits' encryption matches the character "@" rules
         if len(left) == len(right) == (len(re.findall(r"@", word)) - len(re.findall(r"\(@\)", word))):
             pass
         else:
-            raise IncorrectNumberEncryptionError
+            raise IncorrectDigitEncryptionError
 
-        #Checks if the numbers on both ends form perfect squares from 4 to 9
+        #Checks if the digits on both ends form perfect squares from 4 to 9
         for j in range(len(left)):
             sqr_num = left[j] + right[j]
             if sqr_num in ["16", "25", "36", "49", "64", "81"]:
                 pass
             else:
-                raise IncorrectNumberEncryptionError
+                raise IncorrectDigitEncryptionError
 
     return True
 
@@ -255,7 +258,7 @@ def decrypt(text, encryption_key):
     text = text.split()
     for word in text:
 
-        #Returns the word to its original order
+        #Returns 'word' to its original order
         word = word[::-1]
 
         original_word = ""
