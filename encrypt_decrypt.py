@@ -99,6 +99,7 @@ def main():
                     pass
                 except EOFError:
                     sys.exit("\nProgram terminated")
+            
             #Printing the decrypted text
             decryption = decrypt(text, encryption_key)
             decryption_table = [["Encrypted text", text], ["Encryption key", encryption_key], ["Original text", decryption]]
