@@ -60,7 +60,7 @@ Choosing the decrypt option will prompt the user for the following inputs:
 
 Both the encrypted text and the encryption key are validated to ensure they are not empty.
 
-To decrypt the encrypted text, the following process is applied:
+To decrypt the encrypted text, the following process is applied in the function `decrypt(text, encryption_key)`:
 
 - First, split the text into a list of words using the `.split()` function.
 - Reverse each `word`, which will return each `word` to its original order.
