@@ -15,7 +15,7 @@ Upon running the program, a welcome text is displayed using the `pyfiglet` libra
 
 If the user chooses to encrypt, they will be prompted to enter a text to encrypt and an encryption key. Both inputs are validated to ensure they are not empty. A custom error, `EmptyStringError`, has been created using a class that inherits from `Exception` class. All other characters are allowed.
 
-The encryption process involves modifying the text based on its character type and combining alphabet characters with the encryption key to produce new characters. This approach increases the complexity of the encryption.
+The encryption process involves modifying the text based on its character type and combining alphabet characters with the encryption key to produce new characters. This approach increases the complexity of the encryption and makes the result harder to decipher.
 
 To ensure stronger encryption, each encryption key is looped through for each alphabet character in the length of the given text by using `en_key_counter`. This makes decrypting parts of an encrypted text yield incorrect results in most cases, specially when using alphabet characters in the text.
 
