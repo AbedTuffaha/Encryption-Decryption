@@ -19,7 +19,7 @@ The encryption process involves modifying the text based on its character type a
 
 To ensure stronger encryption, each encryption key is looped through for each alphabet character in the length of the given text by using `en_key_counter`. This makes decrypting parts of an encrypted text yield incorrect results in most cases, specially when using alphabet characters in the text.
 
-The following describes the encryption process for each character `char` in each `word` in the target text, after splitting it using `split()`:
+The following describes the encryption process using the function `encrypt(text, encryption_key)` for each character `char` in each `word` in the target text, after splitting it using `split()`:
 
 - If `char` is a lowercase alphabet character, its index value is obtained from a given lowercase alphabet. Based on the character in the key:
    - If the character in the key is in the alphabet, its index value is obtained from a given alphabet string. This value is added to the index value of `char`.
