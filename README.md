@@ -52,7 +52,7 @@ Choosing the decrypt option will prompt the user for the following inputs:
 
 - An encrypted text: The encrypted text provided will undergo thorough validation using regular expressions in the function `decryption_text_valdiation(text)`. Each `word` in the text must meet specific criteria:
   - If `word` contains "#", it must be between brackets as "(#)" or one of the following: "#7#", "#8#", "#9#", and/or "#0#".
-  - If numbers are present on both the left and right sides of `word`, the length of the left side must be equal to the length of the right side, as well as the number of occurrences of "@" alone, as "(@)" with parenthesis is not associated with digits' encryption.
+  - If numbers are present on both the left and right sides of `word`, the length of `left` must be equal to the length of `right`, as well as the number of occurrences of "@" alone, as "(@)" with parenthesis is not associated with digits' encryption.
   - The numbers at both ends of `word` must form perfect squares of the numbers from 4 to 9.
   - In case of incorrect or invalid number encryption, a custom error is raised using the class `IncorrectNumberEncryptionError` which inherits from the `Exception` class.
 
@@ -68,7 +68,7 @@ To decrypt the encrypted text, the following process is applied in the function 
   - If `char` is a digit, continue processing.
   - If `char` is not a digit, split `word` into `left` and `word` and reverse the order of `left` and `word`.
   - In the new `word`, if `char` is a digit, continue processing.
-  - If `char` is not a digit, split the `word` into `word` and `right` and reverse the order of `word` and `right`.
+  - If `char` is not a digit, split `word` into `word` and `right` and reverse the order of `word` and `right`.
     - The reason for the multiple uses of reverses here is to ensure that the encryption of digits less than 4 is preserved in the middle part of the final `word`, while repeating the steps above. Multiple approaches are possible here as well like starting from `-1` index, or checking if `char` and the next 2 indices match special digits' encryption.
   - Now we have `left`, `word`, and `right`. If there were no matches for digits, `left` and `right` would be empty. Then, for each `char` in `word`, perform the following steps:
     - If `char` is in the alphabet:
@@ -76,7 +76,7 @@ To decrypt the encrypted text, the following process is applied in the function 
       - If `char` is lowercase, apply the reverse process of uppercase encryption. A similar process to the above step, then finally replace `char` with an uppercase character from a given uppercase alphabet string using the remainder as an index.
     - If `char` is "(", check if `char` and the following 2 indices form either of the special symbols "(@)" or "(#)". If they do, replace `char` with "@" or "#" accordingly. Otherwise, leave it as intended.
     - If `char` is "#", replace it and the following 2 indices with the corresponding original number from the encryption "#7#", "#8#", "#9#", "#0#" (i.e., "0", "1", "2", "3").
-    - If `char` is "@", replace it with the square root of the combined same-index elements from 'left' and 'right'. A counter `j` is used for this purpose.
+    - If `char` is "@", replace it with the square root of the combined same-index elements from `left` and `right`. A counter `j` is used for this purpose.
     - If `char` is anything else, keep it as is.
 
 After processing the last character, add the resulting word to a list. Once all words are processed, join the word list with a space using the `"".join()` function and return it as the decrypted text.
