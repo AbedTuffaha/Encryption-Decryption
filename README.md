@@ -79,6 +79,6 @@ To decrypt the encrypted text, the following process is applied in the function 
     - If `char` is "@", replace it with the square root of the combined same-index elements from `left` and `right`. A counter `j` is used for this purpose.
     - If `char` is anything else, keep it as is.
 
-After processing the last character, add the resulting word to a list. Once all words are processed, join the word list with a space using the `"".join()` function and return it as the decrypted text.
+After processing the last character, add the resulting word to a list. Once all words are processed, join the word list with a space using `"".join()` and return it as the decrypted text.
 
 Finally, using the `Tabulate` library, a table is printed containing the encrypted text, the encryption key, and the original text.
