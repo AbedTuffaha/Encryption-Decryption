@@ -40,7 +40,7 @@ The remainder of this value after dividing by 26 (the length of the alphabet) is
 
 After processing the last `char`, the `word` is reversed, and the total word result is added to a list. This adds more chaos to the final encrypted text.
 
-Once all words are processed, they are joined with a space using `"".join()` and returned as the total encrypted text.
+Once all words are processed, they are joined with a space using the `.join()` method and returned as the total encrypted text.
 
 Using the `tabulate` library, a table is printed that displays the text, encryption key, and encrypted text.
 
@@ -79,6 +79,8 @@ To decrypt the encrypted text, the following process is applied in the function 
     - If `char` is "@", replace it with the square root of the combined same-index elements from `left` and `right`. A counter `j` is used for this purpose.
     - If `char` is anything else, keep it as is.
 
-After processing the last character, add the resulting word to a list. Once all words are processed, join the word list with a space using `"".join()` and return it as the decrypted text.
+After processing the last character, add the resulting word to a list. 
 
-Finally, using the `Tabulate` library, a table is printed containing the encrypted text, the encryption key, and the original text.
+Once all words are processed, the word list is joined with a space using the `.join()` method and return it as the decrypted text.
+
+Using the `tabulate` library, a table is printed containing the encrypted text, the encryption key, and the original text.
