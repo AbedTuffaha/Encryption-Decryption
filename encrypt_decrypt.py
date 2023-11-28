@@ -120,13 +120,11 @@ def validate_choice(choice):
 
 #Encryption function, the encryption process is described in README.md
 def encrypt(text, encryption_key):
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
-    Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    alphabet_lower = "abcdefghijklmnopqrstuvwxyz"
+    alphabet_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     zero_to_three = {"0": "#7#", "1": "#8#", "2": "#9#", "3": "#0#"}
     special = {"@": "(@)", "#": "(#)"}
     encrypted_text = []
-    en_key_lower = encryption_key.lower()
-    en_key_upper = encryption_key.upper()
     en_key_counter = 0
     text = text.split()
     for word in text:
@@ -137,28 +135,34 @@ def encrypt(text, encryption_key):
             en_key_index = 0
             if char.isalpha():
                 if char.islower():
-                    index = alphabet.index(char)
-                    if en_key_lower[en_key_counter].isalpha():
-                        en_key_index = alphabet.index(en_key_lower[en_key_counter])
-                    elif en_key_lower[en_key_counter].isdigit():
-                        en_key_index = int(en_key_lower[en_key_counter])
+                    index = alphabet_lower.index(char)
+                    if encryption_key[en_key_counter].isalpha():
+                        if encryption_key[en_key_counter].islower():
+                            en_key_index = alphabet_lower.index(encryption_key[en_key_counter])
+                        else:
+                            en_key_index = alphabet_upper.index(encryption_key[en_key_counter])
+                    elif encryption_key[en_key_counter].isdigit():
+                        en_key_index = int(encryption_key[en_key_counter])
                     else:
                         en_key_index = 13
                     new_index = (index + en_key_index) % 26
-                    new_word += Alphabet[new_index]
+                    new_word += alphabet_upper[new_index]
                     en_key_counter += 1
                     if en_key_counter == len(encryption_key):
                         en_key_counter = 0
                 elif char.isupper():
-                    index = Alphabet.index(char)
-                    if en_key_upper[en_key_counter].isalpha():
-                        en_key_index = Alphabet.index(en_key_upper[en_key_counter])
-                    elif en_key_upper[en_key_counter].isdigit():
-                        en_key_index = int(en_key_upper[en_key_counter])
+                    index = alphabet_upper.index(char)
+                    if encryption_key[en_key_counter].isalpha():
+                        if encryption_key[en_key_counter].islower():
+                            en_key_index = alphabet_lower.index(encryption_key[en_key_counter])
+                        else:
+                            en_key_index = alphabet_upper.index(encryption_key[en_key_counter])
+                    elif encryption_key[en_key_counter].isdigit():
+                        en_key_index = int(encryption_key[en_key_counter])
                     else:
                         en_key_index = 13
                     new_index = (index + en_key_index) % 26
-                    new_word += alphabet[new_index]
+                    new_word += alphabet_lower[new_index]
                     en_key_counter += 1
                     if en_key_counter == len(encryption_key):
                         en_key_counter = 0
@@ -248,13 +252,11 @@ def decryption_text_valdiation(text):
 
 #Decryption function, the decryption process is described in README.md
 def decrypt(text, encryption_key):
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
-    Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    alphabet_lower = "abcdefghijklmnopqrstuvwxyz"
+    alphabet_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     zero_to_three_rev = {"#7#": "0", "#8#": "1", "#9#": "2", "#0#": "3"}
     unspecial = {"(@)": "@", "(#)": "#"}
     decrypted_text = []
-    en_key_lower = encryption_key.lower()
-    en_key_upper = encryption_key.upper()
     en_key_counter = 0
     text = text.split()
     for word in text:
@@ -289,29 +291,35 @@ def decrypt(text, encryption_key):
         while i <= len(word) - 1:
             if word[i].isalpha():
                 if word[i].isupper():
-                    index = Alphabet.index(word[i])
-                    if en_key_lower[en_key_counter].isalpha():
-                        en_key_index = alphabet.index(en_key_lower[en_key_counter])
-                    elif en_key_lower[en_key_counter].isdigit():
-                        en_key_index = int(en_key_lower[en_key_counter])
+                    index = alphabet_upper.index(word[i])
+                    if encryption_key[en_key_counter].isalpha():
+                        if encryption_key[en_key_counter].islower():
+                            en_key_index = alphabet_lower.index(encryption_key[en_key_counter])
+                        else:
+                            en_key_index = alphabet_upper.index(encryption_key[en_key_counter])
+                    elif encryption_key[en_key_counter].isdigit():
+                        en_key_index = int(encryption_key[en_key_counter])
                     else:
                         en_key_index = 13
                     old_index = (index - en_key_index + 26) % 26
-                    original_word += alphabet[old_index]
+                    original_word += alphabet_lower[old_index]
                     en_key_counter += 1
                     if en_key_counter == len(encryption_key):
                         en_key_counter = 0
                     i += 1
                 elif word[i].lower():
-                    index = alphabet.index(word[i])
-                    if en_key_upper[en_key_counter].isalpha():
-                        en_key_index = alphabet.index(en_key_lower[en_key_counter])
-                    elif en_key_upper[en_key_counter].isdigit():
-                        en_key_index = int(en_key_lower[en_key_counter])
+                    index = alphabet_lower.index(word[i])
+                    if encryption_key[en_key_counter].isalpha():
+                        if encryption_key[en_key_counter].islower():
+                            en_key_index = alphabet_lower.index(encryption_key[en_key_counter])
+                        else:
+                            en_key_index = alphabet_upper.index(encryption_key[en_key_counter])
+                    elif encryption_key[en_key_counter].isdigit():
+                        en_key_index = int(encryption_key[en_key_counter])
                     else:
                         en_key_index = 13
                     old_index = (index - en_key_index + 26) % 26
-                    original_word += Alphabet[old_index]
+                    original_word += alphabet_lower[old_index]
                     en_key_counter += 1
                     if en_key_counter == len(encryption_key):
                         en_key_counter = 0
