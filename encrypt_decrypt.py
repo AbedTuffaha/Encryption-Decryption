@@ -319,7 +319,7 @@ def decrypt(text, encryption_key):
                     else:
                         en_key_index = 13
                     old_index = (index - en_key_index + 26) % 26
-                    original_word += alphabet_lower[old_index]
+                    original_word += alphabet_upper[old_index]
                     en_key_counter += 1
                     if en_key_counter == len(encryption_key):
                         en_key_counter = 0
