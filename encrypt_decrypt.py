@@ -307,7 +307,7 @@ def decrypt(text, encryption_key):
                     if en_key_counter == len(encryption_key):
                         en_key_counter = 0
                     i += 1
-                elif word[i].lower():
+                elif word[i].islower():
                     index = alphabet_lower.index(word[i])
                     if encryption_key[en_key_counter].isalpha():
                         if encryption_key[en_key_counter].islower():
