@@ -84,3 +84,7 @@ After processing the last character, add the resulting word to a list.
 Once all words are processed, the word list is joined with a space using the `.join()` method and return it as the decrypted text.
 
 Using the `tabulate` library, a table is printed containing the encrypted text, the encryption key, and the original text.
+
+WIP: 1- Adding an option to write the encrypted/decrypted text into a .txt file.
+     2- A lot of repetition and very long functions, will separate the tasks.
+     3- Provide many examples in the README.md file.
